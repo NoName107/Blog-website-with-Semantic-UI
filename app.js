@@ -6,7 +6,7 @@ var bodyParser     = require("body-parser"),
     app            = express();
 
 // mongoose.connect("mongodb://localhost/blogApp");
-mongoose.connect("mongodb+srv://dbfirst:Bojalwar%401@cluster0-3z44d.mongodb.net/test?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://firstUser:firstUser@cluster0-yfidf.gcp.mongodb.net/test?retryWrites=true&w=majority");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
