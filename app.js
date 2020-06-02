@@ -5,8 +5,17 @@ var bodyParser     = require("body-parser"),
     express        = require("express"),
     app            = express();
 
-// mongoose.connect("mongodb://localhost/blogApp");
-mongoose.connect("mongodb+srv://firstUser:firstUser@cluster0-yfidf.gcp.mongodb.net/test?retryWrites=true&w=majority");
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://firstUser:firstUser@cluster0-yfidf.gcp.mongodb.net/test?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//     const collection = client.db("test").collection("devices");
+//     // perform actions on the collection object
+//     client.close();
+// });
+// mongoose.connect("mongodb://localhost/blogApp", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://firstUser:firstUser@cluster0-yfidf.gcp.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
