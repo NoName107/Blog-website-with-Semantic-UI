@@ -5,6 +5,7 @@ var bodyParser     = require("body-parser"),
     express        = require("express"),
     app            = express();
 
+const PORT = process.env.PORT || 3000;    
 // const MongoClient = require('mongodb').MongoClient;
 // const uri = "mongodb+srv://firstUser:firstUser@cluster0-yfidf.gcp.mongodb.net/test?retryWrites=true&w=majority";
 // const client = new MongoClient(uri, { useNewUrlParser: true });
@@ -14,7 +15,7 @@ var bodyParser     = require("body-parser"),
 //     client.close();
 // });
 // mongoose.connect("mongodb://localhost/blogApp", {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect("mongodb+srv://firstUser:firstUser@cluster0-yfidf.gcp.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/blogApp", {useNewUrlParser: true, useUnifiedTopology: true});
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -107,6 +108,6 @@ app.delete("/blogs/:id", function (req, res) {
     })
 })
 
-app.listen(3000, function () {
+app.listen(PORT, function () {
     console.log("The Server has started");
 })
